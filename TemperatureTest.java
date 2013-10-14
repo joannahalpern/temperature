@@ -10,6 +10,10 @@ import org.junit.* ;
 import static org.junit.Assert.* ;
 
 public class TemperatureTest {
+	Temperature boilingInC = new Temperature(100, Temperature.Units.CELSIUS);
+	Temperature boilingInF = new Temperature(212, Temperature.Units.FAHRENHEIT);
+	Temperature boilingInK = new Temperature(373.15, Temperature.Units.KELVIN);
+
 
 	/**
 	 * Sample usage
@@ -25,10 +29,9 @@ public class TemperatureTest {
 	 */
 	@Test
 	public void test_returnCelsius(){
-	System.out.println("Test if getUnits returns CELSIUS");
-	Temperature boilingInCelsius = new Temperature(100, Temperature.Units.CELSIUS);
-	Temperature.Units C = boilingInCelsius.getUnits();
-	assertTrue(C == Temperature.Units.CELSIUS);
+//	System.out.println("Test if getUnits returns CELSIUS");
+	Temperature.Units C = boilingInC.getUnits();
+	assertTrue("getUnits doesn't work", C == Temperature.Units.CELSIUS);
 	}
 
 //	@Test
