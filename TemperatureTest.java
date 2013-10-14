@@ -14,6 +14,10 @@ public class TemperatureTest {
 	Temperature boilingInC = new Temperature(100, Temperature.Units.CELSIUS);
 	Temperature boilingInF = new Temperature(212, Temperature.Units.FAHRENHEIT);
 	Temperature boilingInK = new Temperature(373.15, Temperature.Units.KELVIN);
+	
+	Temperature absoluteZeroInC = new Temperature(-273.15, Temperature.Units.CELSIUS);
+	Temperature absoluteZeroInF = new Temperature(-459.67, Temperature.Units.FAHRENHEIT);
+	Temperature absoluteZeroInK = new Temperature(0, Temperature.Units.KELVIN);
 
 
 	/**
@@ -42,6 +46,63 @@ public class TemperatureTest {
 		assertEquals("get value doesn't return the expected value", expectedValue, actualValue, 0.000001);
 	}
 
+//	public void test_changeUnits(Temperature.Units unitsFrom, double valueFrom, Temperature.Units unitsTo, double valueTo){
+//		Temperature boilingInC = new Temperature(100, Temperature.Units.CELSIUS);
+//		Temperature boilingInF = new Temperature(212, Temperature.Units.FAHRENHEIT);
+//		Temperature boilingInK = new Temperature(373.15, Temperature.Units.KELVIN);
+//		
+//		Temperature.Units expectedUnits = Temperature.Units.FAHRENHEIT;
+//
+//	}
+	
+	public void test_changeUnits(Temperature temperatureFrom, Temperature temperatureTo){ //meaning Temperature object from
+
+		Temperature.Units expectedUnits = temperatureTo.getUnits();
+		double expectedValue = temperatureTo.getValue();
+		
+		temperatureFrom.changeUnits(expectedUnits);
+		Temperature.Units actualUnits = temperatureFrom.getUnits();
+		double actualValue = temperatureFrom.getValue();
+		
+		assertTrue(expectedUnits == actualUnits);
+		System.out.println("expectedUnits:" + expectedUnits);
+		System.out.println("actualUnits:" + actualUnits);
+		System.out.println("expectedValue:" + expectedValue);
+		System.out.println("actualValue:" + actualValue);
+
+		assertEquals(expectedValue, actualValue, 0.000001);
+	}
+	
+	@Test
+	public void test_changeUnits_CtoF(){
+		test_changeUnits(boilingInC, boilingInF);
+		test_changeUnits(absoluteZeroInC, absoluteZeroInF);
+	}
+	@Test
+	public void test_changeUnits_CtoK(){
+		test_changeUnits(boilingInC, boilingInK);
+		test_changeUnits(absoluteZeroInC, absoluteZeroInK);
+	}
+	@Test
+	public void test_changeUnits_FtoC(){
+		test_changeUnits(boilingInF, boilingInC);
+		test_changeUnits(absoluteZeroInF, absoluteZeroInC);
+	}
+	@Test
+	public void test_changeUnits_FtoK(){
+		test_changeUnits(boilingInF, boilingInK);
+		test_changeUnits(absoluteZeroInF, absoluteZeroInK);
+	}
+	@Test
+	public void test_changeUnits_KtoC(){
+		test_changeUnits(boilingInK, boilingInC);
+		test_changeUnits(absoluteZeroInK, absoluteZeroInC);
+	}
+	@Test
+	public void test_changeUnits_KtoF(){
+		test_changeUnits(boilingInK, boilingInF);
+		test_changeUnits(absoluteZeroInK, absoluteZeroInF);
+	}
 //	@Test
 //	public void test_unitsAfterConversion
 //	Temperature boilingInCelsius = new Temperature (100, Temperature.CELSIUS);
