@@ -1,3 +1,5 @@
+package temperature;
+
 /** 
  * @author Aditya Mahajan <aditya.mahajan@mcgill.ca>
  * @version 2013.10.06
@@ -6,8 +8,9 @@
 
 
 /**
- * The {@code Temperature} class allows a user to convert temperature from on
+ * The {@code Temperature} class allows a user to convert temperature from one
  * unit to another.
+ *
  *
  * Sample usage
  * <pre><code>
@@ -25,7 +28,7 @@
 public class Temperature {
 
   /** Enumerator for different temperature units */
-  public static enum Units { FAHRENHEIT, CELSIUS, KELVIN }
+  public static enum Units { FAHRENHEIT, CELSIUS, KELVIN } //enum made type Unit (which can either be F, C, or K)
 
   private final double valueInKelvin;
   private Units units;
@@ -53,7 +56,7 @@ public class Temperature {
    * @param value numerical value of Temperature
    */
 
-  protected double convertToKelvin(double value) {
+  protected double convertToKelvin(double value) { //should change units to K
       double convertedValue;
 
       switch (units) {
@@ -72,7 +75,7 @@ public class Temperature {
   /** Convert a {@code Temperature} value from  Kelvin to {@code Units} 
    * @param value numerical value of Temperature
    */
-  protected double convertFromKelvin(double value) {
+  protected double convertFromKelvin(double value) { //TODO change units 
       double convertedValue;
 
       switch (units) {
@@ -131,7 +134,7 @@ public class Temperature {
    * in a consistent manner.
    * @param units the new {@code Units} 
    */
-  public void changeUnits(Units units) {
+  public void changeUnits(Units units) { //this should also change the value
       this.units = units;
   }
 
