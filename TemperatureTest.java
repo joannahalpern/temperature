@@ -5,6 +5,7 @@ package temperature;
  * @version 2013.10.06
  * Unit Testing Temperature class
  */
+// when I test data I will try to test situation which are most likely as well as the edge cases
 
 import org.junit.* ;
 import static org.junit.Assert.* ;
@@ -28,10 +29,17 @@ public class TemperatureTest {
 	 *              converted.toString()));
 	 */
 	@Test
-	public void test_returnCelsius(){
+	public void test_getUnits(){
 //	System.out.println("Test if getUnits returns CELSIUS");
-	Temperature.Units C = boilingInC.getUnits();
-	assertTrue("getUnits doesn't work", C == Temperature.Units.CELSIUS);
+		Temperature.Units C = boilingInC.getUnits();
+		assertTrue("getUnits doesn't return CELSIUS", C == Temperature.Units.CELSIUS);
+	}
+	
+	@Test
+	public void test_getValue(){
+		double expectedValue = 100;
+		double actualValue = boilingInC.getValue();
+		assertEquals("get value doesn't return the expected value", expectedValue, actualValue, 0.000001);
 	}
 
 //	@Test
