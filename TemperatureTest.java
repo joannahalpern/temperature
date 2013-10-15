@@ -18,7 +18,7 @@ public class TemperatureTest {
 	Temperature absoluteZeroInC = new Temperature(-273.15, Temperature.Units.CELSIUS);
 	Temperature absoluteZeroInF = new Temperature(-459.67, Temperature.Units.FAHRENHEIT);
 	Temperature absoluteZeroInK = new Temperature(0, Temperature.Units.KELVIN);
-
+	
 
 	/**
 	 * Sample usage
@@ -95,22 +95,10 @@ public class TemperatureTest {
 		test_changeUnits(boilingInK, boilingInF);
 		test_changeUnits(absoluteZeroInK, absoluteZeroInF);
 	}
+	
 	@Test(expected = Exception.class)
 	public void belowAbsoluteZero(){
 		Temperature belowAbZero = new Temperature(-5, Temperature.Units.KELVIN);
 		fail();		
 	}
-
-  // Add multiple tests to check all functions of
-  // {@Code Temperature} class.
-
-  // @Test
-  // public void .... (){
-  //    ...
-  // }
-
-  // @Test
-  // public void .... (){
-  //    ...
-  // }
 }
