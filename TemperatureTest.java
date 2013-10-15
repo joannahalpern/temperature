@@ -14,11 +14,11 @@ public class TemperatureTest {
 	Temperature boilingInC = new Temperature(100, Temperature.Units.CELSIUS);
 	Temperature boilingInF = new Temperature(212, Temperature.Units.FAHRENHEIT);
 	Temperature boilingInK = new Temperature(373.15, Temperature.Units.KELVIN);
-	
+
 	Temperature absoluteZeroInC = new Temperature(-273.15, Temperature.Units.CELSIUS);
 	Temperature absoluteZeroInF = new Temperature(-459.67, Temperature.Units.FAHRENHEIT);
 	Temperature absoluteZeroInK = new Temperature(0, Temperature.Units.KELVIN);
-	
+
 
 	/**
 	 * Sample usage
@@ -38,7 +38,7 @@ public class TemperatureTest {
 		Temperature.Units C = boilingInC.getUnits();
 		assertTrue("getUnits doesn't return CELSIUS", C == Temperature.Units.CELSIUS);
 	}
-	
+
 	@Test
 	public void test_getValue(){
 		double expectedValue = 100;
@@ -46,25 +46,33 @@ public class TemperatureTest {
 		assertEquals("get value doesn't return the expected value", expectedValue, actualValue, 0.000001);
 	}
 
+//	public void test_changeUnits(Temperature.Units unitsFrom, double valueFrom, Temperature.Units unitsTo, double valueTo){
+//		Temperature boilingInC = new Temperature(100, Temperature.Units.CELSIUS);
+//		Temperature boilingInF = new Temperature(212, Temperature.Units.FAHRENHEIT);
+//		Temperature boilingInK = new Temperature(373.15, Temperature.Units.KELVIN);
+//		
+//		Temperature.Units expectedUnits = Temperature.Units.FAHRENHEIT;
+//
+//	}
+
 	public void test_changeUnits(Temperature temperatureFrom, Temperature temperatureTo){ //meaning Temperature object from
 
 		Temperature.Units expectedUnits = temperatureTo.getUnits();
 		double expectedValue = temperatureTo.getValue();
-		
+
 		temperatureFrom.changeUnits(expectedUnits);
-		
 		Temperature.Units actualUnits = temperatureFrom.getUnits();
 		double actualValue = temperatureFrom.getValue();
-		
-		assertTrue(expectedUnits == actualUnits);
-		assertEquals(expectedValue, actualValue, 0.000001);
 
+		assertTrue(expectedUnits == actualUnits);
 		System.out.println("expectedUnits:" + expectedUnits);
 		System.out.println("actualUnits:" + actualUnits);
 		System.out.println("expectedValue:" + expectedValue);
 		System.out.println("actualValue:" + actualValue);
+
+		assertEquals(expectedValue, actualValue, 0.000001);
 	}
-	
+
 	@Test
 	public void test_changeUnits_CtoF(){
 		test_changeUnits(boilingInC, boilingInF);
@@ -95,10 +103,20 @@ public class TemperatureTest {
 		test_changeUnits(boilingInK, boilingInF);
 		test_changeUnits(absoluteZeroInK, absoluteZeroInF);
 	}
-	
-	@Test(expected = Exception.class)
-	public void belowAbsoluteZero(){
-		Temperature belowAbZero = new Temperature(-5, Temperature.Units.KELVIN);
-		fail();		
-	}
+//	@Test
+//	public void test_unitsAfterConversion
+//	Temperature boilingInCelsius = new Temperature (100, Temperature.CELSIUS);
+
+  // Add multiple tests to check all functions of
+  // {@Code Temperature} class.
+
+  // @Test
+  // public void .... (){
+  //    ...
+  // }
+
+  // @Test
+  // public void .... (){
+  //    ...
+  // }
 }

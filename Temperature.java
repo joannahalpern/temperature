@@ -8,9 +8,8 @@ package temperature;
 
 
 /**
- * The {@code Temperature} class allows a user to convert temperature from one
+ * The {@code Temperature} class allows a user to convert temperature from on
  * unit to another.
- *
  *
  * Sample usage
  * <pre><code>
@@ -28,7 +27,7 @@ package temperature;
 public class Temperature {
 
   /** Enumerator for different temperature units */
-  public static enum Units { FAHRENHEIT, CELSIUS, KELVIN } //enum made type Unit (which can either be F, C, or K)
+  public static enum Units { FAHRENHEIT, CELSIUS, KELVIN }
 
   private final double valueInKelvin;
   private Units units;
@@ -38,9 +37,11 @@ public class Temperature {
    * @param value numerical value of {@code Temperature}
    * @param units {@code Units} of {@code Temperature}
    */
-  public Temperature (double value, Temperature.Units units){
+  public Temperature (double value, Temperature.Units units) {
       this.units    = units;
       valueInKelvin = convertToKelvin(value);
+      if(valueInKelvin<0)
+    	  System.out.println("this temperature does not exist");
   }
 
   /**
@@ -56,7 +57,7 @@ public class Temperature {
    * @param value numerical value of Temperature
    */
 
-  protected double convertToKelvin(double value) { //should change units to K
+  protected double convertToKelvin(double value) {
       double convertedValue;
 
       switch (units) {
@@ -75,7 +76,7 @@ public class Temperature {
   /** Convert a {@code Temperature} value from  Kelvin to {@code Units} 
    * @param value numerical value of Temperature
    */
-  protected double convertFromKelvin(double value) { //TODO change units 
+  protected double convertFromKelvin(double value) {
       double convertedValue;
 
       switch (units) {
@@ -134,7 +135,7 @@ public class Temperature {
    * in a consistent manner.
    * @param units the new {@code Units} 
    */
-  public void changeUnits(Units units) { //this should also change the value
+  public void changeUnits(Units units) {
       this.units = units;
   }
 
@@ -143,11 +144,11 @@ public class Temperature {
    * as follows
    * <pre><code>
    *    Temperature temperature = new Temperature(0, Temperature.Units.CELSIUS);
-   *    System.out.println(temperature.toString()); // prints "0 °C"
+   *    System.out.println(temperature.toString()); // prints "0 °C"
    *    temperature.changeUnits(Temperature.Units.FAHRENHEIT);
-   *    System.out.println(temperature.toString()); // prints "32 °F"
+   *    System.out.println(temperature.toString()); // prints "32 °F"
    *    temperature.changeUnits(Temperature.Units.KELVIN);
-   *    System.out.println(temperature.toString()); // prints "273.15 K"
+   *    System.out.println(temperature.toString()); // prints "273.15 K"
    * </code></pre>
    */
   public String toString() {
