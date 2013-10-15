@@ -38,11 +38,9 @@ public class Temperature {
    * @param value numerical value of {@code Temperature}
    * @param units {@code Units} of {@code Temperature}
    */
-  public Temperature (double value, Temperature.Units units) throws Exception{
+  public Temperature (double value, Temperature.Units units){
       this.units    = units;
       valueInKelvin = convertToKelvin(value);
-      if(valueInKelvin<0)
-    	  throw new Exception("temperature DNE because it's below absolute zero");
   }
 
   /**
